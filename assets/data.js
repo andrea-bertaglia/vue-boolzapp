@@ -169,4 +169,10 @@ createApp({
       ],
     };
   },
+  methods: {
+    handleContact: function (selectedIndex) {
+      console.log(selectedIndex);
+      this.selectedContact = selectedIndex;
+    },
+  },
 }).mount("#app");

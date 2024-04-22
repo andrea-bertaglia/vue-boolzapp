@@ -62,7 +62,11 @@
           />
         </div>
         <div class="contacts">
-          <div class="contact" v-for="curContact in contacts">
+          <div
+            class="contact"
+            v-for="(curContact, index) in contacts"
+            @click="handleContact(index)"
+          >
             <div class="contact-logo">
               <img
                 :src="`./assets/img/avatar${curContact.avatar}.jpg`"
