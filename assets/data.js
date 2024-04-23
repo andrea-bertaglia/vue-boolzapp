@@ -6,6 +6,7 @@ createApp({
   data() {
     return {
       selectedContact: 0,
+      sendIcon: "microphone",
       textMessage: "",
       newMessageSent: {
         date: "",
@@ -190,6 +191,7 @@ createApp({
     },
     getNewMessage: function () {
       console.log(this.textMessage);
+      sendIcon = "paper-plane";
       this.newMessageSent.message = this.textMessage.trim();
       this.newMessageSent.date = this.checkTime();
       console.log(this.newMessageSent);

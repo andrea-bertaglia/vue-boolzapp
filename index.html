@@ -149,7 +149,12 @@
             @keyup.enter="getNewMessage()"
           />
           <div class="right-footer-icon">
-            <i class="fa fa-microphone" aria-hidden="true"></i>
+            <i
+              :class="textMessage === '' ? 'fa fa-microphone' : 'fa fa-paper-plane'"
+              aria-hidden="true"
+              @click="getNewMessage()"
+              style="cursor: pointer"
+            ></i>
           </div>
         </div>
       </div>
