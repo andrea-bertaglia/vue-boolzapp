@@ -23,6 +23,7 @@ createApp({
   data() {
     return {
       selectedContact: 0,
+      statusUpdate: "Ultimo accesso oggi alle 16:26",
       textMessage: "",
       newMessageSent: {
         date: "",
@@ -218,6 +219,7 @@ createApp({
         status: "sent",
       };
       setTimeout(() => {
+        this.statusUpdate = "sta scrivendo...";
         console.log("test timeout");
         this.newMessageReceived.date = this.checkTime();
         this.newMessageReceived.message = this.getRandomAnswer();
@@ -225,6 +227,15 @@ createApp({
           this.newMessageReceived
         );
       }, "1000");
+      setTimeout(() => {
+        this.statusUpdate = "online";
+      }, "3000");
+      setTimeout(() => {
+        this.statusUpdate = `Ultimo accesso alle ${dt
+          .now()
+          .setLocale("it")
+          .toLocaleString(dt.TIME_24_SIMPLE)}`;
+      }, "5000");
     },
     searchChat: function (searchedText) {
       console.log(searchedText);
