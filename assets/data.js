@@ -190,7 +190,7 @@ createApp({
     },
     getNewMessage: function () {
       console.log(this.textMessage);
-      this.newMessageSent.message = this.textMessage;
+      this.newMessageSent.message = this.textMessage.trim();
       this.newMessageSent.date = this.checkTime();
       console.log(this.newMessageSent);
       this.contacts[this.selectedContact].messages.push(this.newMessageSent);
