@@ -4,6 +4,12 @@ createApp({
   data() {
     return {
       selectedContact: 0,
+      textMessage: "",
+      newMessage: {
+        date: "10/01/2020 15:30:55",
+        message: "",
+        status: "sent",
+      },
       contacts: [
         {
           name: "Michele",
@@ -173,6 +179,18 @@ createApp({
     handleContact: function (selectedIndex) {
       console.log(selectedIndex);
       this.selectedContact = selectedIndex;
+    },
+    getNewMessage: function () {
+      console.log(this.textMessage);
+      this.newMessage.message = this.textMessage;
+      console.log(this.newMessage);
+      this.contacts[this.selectedContact].messages.push(this.newMessage);
+      this.textMessage = "";
+      this.newMessage = {
+        date: "10/01/2020 15:30:55",
+        message: "",
+        status: "sent",
+      };
     },
   },
 }).mount("#app");
