@@ -1,3 +1,5 @@
+const dt = luxon.DateTime;
+
 const { createApp } = Vue;
 
 createApp({
@@ -6,12 +8,12 @@ createApp({
       selectedContact: 0,
       textMessage: "",
       newMessageSent: {
-        date: "10/01/2020 15:30:55",
+        date: "",
         message: "",
         status: "sent",
       },
       newMessageReceived: {
-        date: "10/01/2020 15:30:55",
+        date: "",
         message: "Ok",
         status: "received",
       },
@@ -189,16 +191,18 @@ createApp({
     getNewMessage: function () {
       console.log(this.textMessage);
       this.newMessageSent.message = this.textMessage;
+      this.newMessageSent.date = this.checkTime();
       console.log(this.newMessageSent);
       this.contacts[this.selectedContact].messages.push(this.newMessageSent);
       this.textMessage = "";
       this.newMessageSent = {
-        date: "10/01/2020 15:30:55",
+        date: "",
         message: "",
         status: "sent",
       };
       setTimeout(() => {
         console.log("test timeout");
+        this.newMessageReceived.date = this.checkTime();
         this.contacts[this.selectedContact].messages.push(
           this.newMessageReceived
         );
@@ -224,6 +228,14 @@ createApp({
         this.contacts[this.selectedContact].messages[selectedMessage]
       );
       this.contacts[this.selectedContact].messages.splice(selectedMessage, 1);
+    },
+    checkTime: function () {
+      const now = dt
+        .now()
+        .setLocale("it")
+        .toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
+      console.log(now);
+      return now;
     },
   },
 }).mount("#app");
