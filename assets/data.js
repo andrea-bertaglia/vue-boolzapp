@@ -1,12 +1,28 @@
 const dt = luxon.DateTime;
 
+const randomAnswers = [
+  "La felicità è un viaggio, non una destinazione.",
+  "Va bene",
+  "La vita è troppo breve per sprecarla a preoccuparsi. Vivi ogni momento al massimo!",
+  "La gentilezza è un linguaggio universale che può essere compreso da tutti.",
+  "Bello!",
+  "Perfetto",
+  "Grazie!",
+  "Le montagne non si scalano semplicemente con la forza, ma con la determinazione.",
+  "Non aspettare il momento perfetto, prendi il momento e rendilo perfetto.",
+  "Sii la versione migliore di te stesso ogni giorno.",
+];
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const { createApp } = Vue;
 
 createApp({
   data() {
     return {
       selectedContact: 0,
-      sendIcon: "microphone",
       textMessage: "",
       newMessageSent: {
         date: "",
@@ -15,7 +31,7 @@ createApp({
       },
       newMessageReceived: {
         date: "",
-        message: "Ok",
+        message: "",
         status: "received",
       },
       searchText: "",
@@ -191,7 +207,6 @@ createApp({
     },
     getNewMessage: function () {
       console.log(this.textMessage);
-      sendIcon = "paper-plane";
       this.newMessageSent.message = this.textMessage.trim();
       this.newMessageSent.date = this.checkTime();
       console.log(this.newMessageSent);
@@ -205,6 +220,7 @@ createApp({
       setTimeout(() => {
         console.log("test timeout");
         this.newMessageReceived.date = this.checkTime();
+        this.newMessageReceived.message = this.getRandomAnswer();
         this.contacts[this.selectedContact].messages.push(
           this.newMessageReceived
         );
@@ -238,6 +254,10 @@ createApp({
         .toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
       console.log(now);
       return now;
+    },
+    getRandomAnswer: function () {
+      const newAnswer = randomAnswers[getRndInteger(0, 9)];
+      return newAnswer;
     },
   },
 }).mount("#app");
