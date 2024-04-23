@@ -59,6 +59,8 @@
             class="left-searchbar-input"
             placeholder="Cerca o inizia una nuova chat"
             name="search"
+            v-model="searchText"
+            @input="searchChat(searchText)"
           />
         </div>
         <div class="contacts">
@@ -66,6 +68,7 @@
             class="contact"
             v-for="(curContact, index) in contacts"
             @click="handleContact(index)"
+            v-show="curContact.visible === true"
           >
             <div class="contact-logo">
               <img

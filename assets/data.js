@@ -15,6 +15,7 @@ createApp({
         message: "Ok",
         status: "received",
       },
+      searchText: "",
       contacts: [
         {
           name: "Michele",
@@ -202,6 +203,20 @@ createApp({
           this.newMessageReceived
         );
       }, "1000");
+    },
+    searchChat: function (searchedText) {
+      console.log(searchedText);
+      this.contacts.forEach((searchedContact) => {
+        if (
+          searchedContact.name
+            .toLowerCase()
+            .includes(searchedText.toLowerCase())
+        ) {
+          searchedContact.visible = true;
+        } else {
+          searchedContact.visible = false;
+        }
+      });
     },
   },
 }).mount("#app");
