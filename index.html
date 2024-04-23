@@ -88,7 +88,10 @@
       <div class="right">
         <div class="header-right">
           <div class="header-right-logo">
-            <img src="assets/img/avatar_1.jpg" alt="" />
+            <img
+              :src="`./assets/img/avatar${contacts[selectedContact].avatar}.jpg`"
+              :alt="`Avatar ${contacts[selectedContact].name}`"
+            />
             <h3>
               <span id="header-right-contact-name"
                 >{{contacts[selectedContact].name}}</span
