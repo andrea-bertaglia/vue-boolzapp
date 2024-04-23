@@ -1,4 +1,4 @@
-![alt text](./screens/screenshot-991.png)
+![Screenshot App](./screens/screenshot-991.png)
 
 # Boolzapp - a (not very) innovative messaging platform
 Nome Repo: **vue-boolzapp**
@@ -26,7 +26,7 @@ Nome Repo: **vue-boolzapp**
 ## Milestone 5 - opzionale
 
 - **Cancella messaggio**: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
-  ![alt text](./screens/hover-1.png)
+  ![Screenshot menu](./screens/hover-1.png)
 - **Visualizzazione ora e ultimo messaggio inviato/ricevuto** nella lista dei contatti
 
 ## Bonus aggiuntivi:

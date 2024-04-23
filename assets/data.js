@@ -218,5 +218,12 @@ createApp({
         }
       });
     },
+    deleteMessage: function (selectedMessage) {
+      console.log(selectedMessage);
+      console.log(
+        this.contacts[this.selectedContact].messages[selectedMessage]
+      );
+      this.contacts[this.selectedContact].messages.splice(selectedMessage, 1);
+    },
   },
 }).mount("#app");
