@@ -5,10 +5,15 @@ createApp({
     return {
       selectedContact: 0,
       textMessage: "",
-      newMessage: {
+      newMessageSent: {
         date: "10/01/2020 15:30:55",
         message: "",
         status: "sent",
+      },
+      newMessageReceived: {
+        date: "10/01/2020 15:30:55",
+        message: "Ok",
+        status: "received",
       },
       contacts: [
         {
@@ -182,15 +187,21 @@ createApp({
     },
     getNewMessage: function () {
       console.log(this.textMessage);
-      this.newMessage.message = this.textMessage;
-      console.log(this.newMessage);
-      this.contacts[this.selectedContact].messages.push(this.newMessage);
+      this.newMessageSent.message = this.textMessage;
+      console.log(this.newMessageSent);
+      this.contacts[this.selectedContact].messages.push(this.newMessageSent);
       this.textMessage = "";
-      this.newMessage = {
+      this.newMessageSent = {
         date: "10/01/2020 15:30:55",
         message: "",
         status: "sent",
       };
+      setTimeout(() => {
+        console.log("test timeout");
+        this.contacts[this.selectedContact].messages.push(
+          this.newMessageReceived
+        );
+      }, "1000");
     },
   },
 }).mount("#app");
